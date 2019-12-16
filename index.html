@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+border:2px solid white;
+width:450px;
+	text-align:center;
+	height:231px;
+	position:relative;
+	left:400px;
+	margin:10px;
+	padding:100px;
+	
+	border-radius:10px;
+}
+</style>
+
+</head>
+<body >
+<script>
+function validate()
+{
+var name=document.registration.name.value;
+var password=document.registration.pswd.value;
+var password2=document.registration.cpswd.value;
+var phonenum=document.registration.phn.value;
+var email=document.registration.email.value;
+var atposition=email.indexOf("@");
+var dotposition=email.lastIndexOf(".");
+if(name==""||name==null)
+{
+alert("name can't be blank");
+document.registration.name.focus();
+return false;
+}
+else if(atposition<1||dotposition<atposition+2||dotposition+2>=email.length)
+{
+alert("Please enter a valid email id");
+return false;
+}
+else if(password.length<6){
+alert("password must be 6");
+document.registration.pswd.focus();
+return false;
+}
+else if(password!=password2){
+alert("password must be same");
+return false;
+}
+else if(phonenum.length<10){
+alert("phonenum must be 10 values");
+return false;
+}
+else{
+alert("successfull");
+return true;
+}
+}
+</script>
+
+<form name="registration" method="POST" action="submit.php" onsubmit="return validate()" >
+<h5>REGISTRATION FORM</h5>
+<label>Username:</label><input type="text" name="uname"/><br><br>
+<label>Name:</label><input type="text" name="name"/><br><br>
+<label>Email:</label><input type="text" name="email"/><br><br>
+<label>password:</label><input type="password" name="pswd"/><br><br>
+<label>confirm-password:</label><input type="password" name="cpswd"/><br><br>
+<label>phn:</label><input type="text" name="phn"/><br><br>
+<input type="submit" value="Submit" name="submit"/>
+</form>
+
+</body>
+</html>
